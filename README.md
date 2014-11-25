@@ -22,3 +22,7 @@ See [official document](http://msdn.microsoft.com/en-us/office/office365/howto/c
 	cd example
 	node onedrive.js
 
+## License
+
+[MICROSOFT SOFTWARE LICENSE TERMS MICROSOFT .NET LIBRARY](Microsoft.Office365.ClientLib.JS.1.0.22/License-Stable.rtf)
+
