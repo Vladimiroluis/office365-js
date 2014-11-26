@@ -2,7 +2,7 @@
   "name": "office365-js",
   "version": "1.0.22",
   "description": "Microsoft Office 365 APIs Client Libraries for node",
-  "main": "o365.js",
+  "main": "office365.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
