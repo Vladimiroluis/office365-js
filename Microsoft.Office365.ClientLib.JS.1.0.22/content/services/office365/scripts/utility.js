@@ -391,6 +391,7 @@ var Microsoft;
                     var deferred = new Microsoft.Utility.Deferred();
 
                     var xhr = new XMLHttpRequest();
+                    xhr.responseType = request.responseType;
 
                     if (!request.method) {
                         request.method = 'GET';
@@ -407,7 +408,7 @@ var Microsoft;
                     xhr.onreadystatechange = function (e) {
                         if (xhr.readyState == 4) {
                             if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                                deferred.resolve(xhr.responseText);
+                                deferred.resolve(xhr.response);
                             } else {
                                 deferred.reject(xhr);
                             }
@@ -417,7 +418,7 @@ var Microsoft;
                     };
 
                     if (request.data) {
-                        if (typeof request.data === 'string') {
+                        if ((typeof request.data === 'string') || (Buffer.isBuffer(request.data))) {
                             xhr.send(request.data);
                         } else {
                             xhr.send(JSON.stringify(request.data));

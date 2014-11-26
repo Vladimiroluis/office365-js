@@ -283,6 +283,7 @@ var Microsoft;
                     var deferred = new Microsoft.Utility.Deferred();
 
                     var xhr = new XMLHttpRequest();
+                    xhr.responseType = request.responseType;
 
                     if (!request.method) {
                         request.method = 'GET';
@@ -299,7 +300,7 @@ var Microsoft;
                     xhr.onreadystatechange = function (e) {
                         if (xhr.readyState == 4) {
                             if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                                deferred.resolve(xhr.responseText);
+                                deferred.resolve(xhr.response);
                             } else {
                                 deferred.reject(xhr);
                             }
@@ -309,7 +310,7 @@ var Microsoft;
                     };
 
                     if (request.data) {
-                        if (typeof request.data === 'string') {
+                        if ((typeof request.data === 'string') || (Buffer.isBuffer(request.data))) {
                             xhr.send(request.data);
                         } else {
                             xhr.send(JSON.stringify(request.data));
@@ -2160,6 +2161,7 @@ var Microsoft;
             FileFetcher.prototype.content = function () {
                 var deferred = new Microsoft.Utility.Deferred(), request = new Microsoft.CoreServices.Extensions.Request(this.getPath("content"));
 
+                request.responseType = 'buffer';
                 request.method = 'GET';
 
                 this.context.request(request).then((function (data) {
@@ -2188,7 +2190,7 @@ var Microsoft;
                 var deferred = new Microsoft.Utility.Deferred(), request = new Microsoft.CoreServices.Extensions.Request(this.getPath("uploadContent"));
 
                 request.method = 'POST';
-                request.data = JSON.stringify({ "contentStream": contentStream });
+                request.data = contentStream;
 
                 this.context.request(request).then(function (data) {
                     deferred.resolve(null);
@@ -2246,6 +2248,7 @@ var Microsoft;
             File.prototype.content = function () {
                 var deferred = new Microsoft.Utility.Deferred(), request = new Microsoft.CoreServices.Extensions.Request(this.getPath("content"));
 
+                request.responseType = 'buffer';
                 request.method = 'GET';
 
                 this.context.request(request).then((function (data) {
@@ -2274,7 +2277,7 @@ var Microsoft;
                 var deferred = new Microsoft.Utility.Deferred(), request = new Microsoft.CoreServices.Extensions.Request(this.getPath("uploadContent"));
 
                 request.method = 'POST';
-                request.data = JSON.stringify({ "contentStream": contentStream });
+                request.data = contentStream;
 
                 this.context.request(request).then(function (data) {
                     deferred.resolve(null);

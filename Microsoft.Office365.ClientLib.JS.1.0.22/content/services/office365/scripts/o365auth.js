@@ -223,7 +223,7 @@ var O365Auth;
             xhr.onreadystatechange = function (e) {
                 if (xhr.readyState == 4) {
                     if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                        deferred.resolve(xhr.responseText);
+                        deferred.resolve(xhr.response);
                     } else {
                         deferred.reject(xhr);
                     }
