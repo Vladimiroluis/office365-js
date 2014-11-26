@@ -1689,6 +1689,15 @@ var Microsoft;
             function ItemFetcher(context, path) {
                 _super.call(this, context, path);
             }
+            
+            ItemFetcher.prototype.asFile = function () {
+                return new FileFetcher(this.context, this.path);
+            };
+
+            ItemFetcher.prototype.asFolder = function () {
+                return new FolderFetcher(this.context, this.path);
+            };
+
             return ItemFetcher;
         })(Microsoft.CoreServices.Extensions.RestShallowObjectFetcher);
         FileServices.ItemFetcher = ItemFetcher;
