@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var o365 = require("../office365.js");
+var o365 = require("../index");
 var O365Auth  = o365.O365Auth;
 var O365Discovery = o365.O365Discovery;
 var SharePointClient = o365.Microsoft.CoreServices.SharePointClient;

@@ -6,9 +6,6 @@ Unofficial Microsoft Office 365 APIs Client Libraries for node
 This is a modified version for 
 [Microsoft.Office365.ClientLib.JS](http://www.nuget.org/packages/Microsoft.Office365.ClientLib.JS/)
 
-## make
-
-	./office365.sh
 
 ## usage
 
