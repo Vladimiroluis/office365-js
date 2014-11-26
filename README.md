@@ -13,13 +13,13 @@ This is a modified version for
 ## usage
 
 Just like the Office 365 APIs .NET and JavaScript client libraries. 
-See [official document](http://msdn.microsoft.com/en-us/office/office365/howto/common-file-tasks-client-library)
+See [official documents](http://msdn.microsoft.com/en-us/office/office365/howto/common-file-tasks-client-library)
 
-	var o365 = require('office365-js');
 
 ## example
 
 	cd example
+	export O365_CLIENT_ID=your_client_app_id
 	node onedrive.js
 
 ## License
