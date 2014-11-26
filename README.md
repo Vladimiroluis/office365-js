@@ -8,7 +8,7 @@ This is a modified version for
 
 ## make
 
-	./o365.sh
+	./office365.sh
 
 ## usage
 

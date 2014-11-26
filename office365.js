@@ -1,4 +1,6 @@
 /// Microsoft.Office365.ClientLib.JS.1.0.22
+/// MICROSOFT SOFTWARE LICENSE TERMS
+/// MICROSOFT .NET LIBRARY
 /// patched by masataka takeuchi for nodejs support
 var window = require("./lib/node-window"), XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var __extends = this.__extends || function (d, b) {
