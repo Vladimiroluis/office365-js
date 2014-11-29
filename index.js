@@ -8,10 +8,14 @@ var path = require('path');
 
 var SDK = "Microsoft.Office365.ClientLib.JS.1.0.22/content/services/office365/scripts";
 
-var context = vm.createContext({
+function createContext(obj) {
+    for (var key in this) if (this.hasOwnProperty(key)) obj[key] = this[key];
+    return vm.createContext(obj);
+}
+
+var context = createContext({
   window: require('./lib/node-window'),
-  XMLHttpRequest: require("xmlhttprequest").XMLHttpRequest,
-  Buffer: require('buffer').Buffer
+  XMLHttpRequest: require("xmlhttprequest").XMLHttpRequest
 });
 ['utility.js', 'o365auth.js', 'o365discovery.js', 'exchange.js', 'sharepoint.js']
 .forEach(function(name) {
