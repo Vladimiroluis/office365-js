@@ -2608,16 +2608,14 @@ var Microsoft;
             };
             Items.prototype.getByPath = function (path) {
                 var _this = this;
-                var deferred = new Microsoft.Utility.Deferred(), request = new Microsoft.CoreServices.Extensions.Request(this.getPath("getByPath"));
+                var deferred = new Microsoft.Utility.Deferred(), request = new Microsoft.CoreServices.Extensions.Request(this.getPath("getByPath('"+encodeURIComponent(path)+"')"));
 
                 request.method = 'GET';
-
                 this.context.request(request).then((function (data) {
                     var parsedData = JSON.parse(data);
-
                     //var path = this.context.serviceRootUri + '/items' + Microsoft.Utility.EncodingHelpers.getKeyExpression([{ name : "id", type : "Edm.String", value : parsedData.d.id }]);
-                    var path = data.d['__metadata']['id'];
-                    deferred.resolve(Item.parseItem(_this.context, path, parsedData.d));
+                    //var path = data.d['__metadata']['id'];
+                    deferred.resolve(Item.parseItem(_this.context, parsedData['@odata.id'], parsedData));
                 }).bind(this), deferred.reject.bind(deferred));
 
                 return deferred;
